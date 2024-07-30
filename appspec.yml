@@ -6,11 +6,11 @@ files:
     overwrite: true
 file_exists_behavior: OVERWRITE
 
-# hooks:
-#   BeforeInstall:
-#     - location: console/update_repo.sh
-#       timeout: 300
-#       runas: root
+hooks:
+  BeforeInstall:
+    - location: console/update_repo.sh
+      timeout: 300
+      runas: root
 #   AfterInstall:
 #     - location: console/run_php_script.sh
 #       timeout: 300
