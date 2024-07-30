@@ -2,4 +2,9 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /var/ww/html/ec2-instance
+    destination: /var/www/html/ec2-instance
+hooks:
+  BeforeInstall:
+    - location: scripts/setup_files.sh
+      timeout: 300
+      runas: root
