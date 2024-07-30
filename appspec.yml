@@ -1,7 +1,7 @@
 version: 0.0
 os: linux
 files:
-  - source: /deploy/
+  - source: /var/www/html/instance
     destination: /var/www/html/ec2-instance
 hooks:
   BeforeInstall:
