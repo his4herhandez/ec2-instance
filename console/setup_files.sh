@@ -1,7 +1,10 @@
 #!/bin/bash
+
+# Ajusta los permisos del directorio
 chown -R www-data:www-data /var/www/html/ec2-instance
 chmod -R 755 /var/www/html/ec2-instance
 
+# Ejecuta el archivo PHP
 /usr/bin/php /var/www/html/ec2-instance/script/CreateHelloWorldMessage.php
 
 if [ $? -ne 0 ]; then
@@ -9,4 +12,4 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-echo "Permisos configurados y script PHP ejecutado correctamente."
+echo "Script PHP ejecutado correctamente."

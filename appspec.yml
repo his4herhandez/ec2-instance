@@ -3,6 +3,7 @@ os: linux
 files:
   - source: /
     destination: /var/www/html/ec2-instance
+    overwrite: true  # Esta opción no es válida en CodeDeploy, pero la mención es para la lógica de inclusión de archivos.
 
 hooks:
   BeforeInstall:

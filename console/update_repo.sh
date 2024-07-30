@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# Agregar el directorio del repositorio como seguro
+# Agrega el directorio del repositorio como seguro
 git config --global --add safe.directory /var/www/html/ec2-instance
 
 # Navega al directorio del repositorio
 cd /var/www/html/ec2-instance
 
-# Actualiza el repositorio
+# Realiza un git pull para actualizar los archivos del repositorio
 git pull origin main
 
 if [ $? -ne 0 ]; then
