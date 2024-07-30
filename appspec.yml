@@ -5,6 +5,10 @@ files:
     destination: /var/www/html/ec2-instance
 hooks:
   BeforeInstall:
+    - location: scripts/cleanup.sh
+      timeout: 300
+      runas: root
+  AfterInstall:
     - location: console/setup_files.sh
       timeout: 300
       runas: root
