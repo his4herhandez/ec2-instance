@@ -2,15 +2,16 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /var/www/html/ec2-instance
-    overwrite: true  # Esta opción no es válida en CodeDeploy, pero la mención es para la lógica de inclusión de archivos.
+    destination: /var/www/wordpress/
+    overwrite: true
+file_exists_behavior: OVERWRITE
 
-hooks:
-  BeforeInstall:
-    - location: console/update_repo.sh
-      timeout: 300
-      runas: root
-  AfterInstall:
-    - location: console/run_php_script.sh
-      timeout: 300
-      runas: root
+# hooks:
+#   BeforeInstall:
+#     - location: console/update_repo.sh
+#       timeout: 300
+#       runas: root
+#   AfterInstall:
+#     - location: console/run_php_script.sh
+#       timeout: 300
+#       runas: root
