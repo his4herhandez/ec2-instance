@@ -1,5 +1,5 @@
 <?php
-
+// comerntario de prueba
 $path = __DIR__;
 $fileName = 'hola_mundo.txt';
 $path = "$path/$nombreArchivo";
