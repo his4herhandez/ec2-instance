@@ -7,7 +7,7 @@ chmod -R 755 /var/www/html/ec2-instance
 
 # Ejecuta el script PHP
 # Asegúrate de que el intérprete de PHP esté disponible en el PATH
-/usr/bin/php /var/www/html/ec2-instance/path/to/CreateHelloWorldMessage.php
+/usr/bin/php /var/www/html/ec2-instance/script/CreateHelloWorldMessage.php
 
 # Verifica el estado de la ejecución
 if [ $? -ne 0 ]; then
