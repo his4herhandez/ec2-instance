@@ -11,7 +11,7 @@ hooks:
     - location: console/update_repo.sh
       timeout: 300
       runas: root
-#   AfterInstall:
-#     - location: console/run_php_script.sh
-#       timeout: 300
-#       runas: root
+  AfterInstall:
+    - location: console/create_message.sh
+      timeout: 300
+      runas: root
