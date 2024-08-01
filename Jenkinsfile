@@ -5,6 +5,7 @@ pipeline {
         stage('Update Repo') {
             steps {
                 dir('/var/www/html/pipeline-jenkins') {
+                    // comentario de prueba
                     sh 'git pull origin main'
                 }
             }
