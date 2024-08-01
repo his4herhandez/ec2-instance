@@ -6,11 +6,11 @@ files:
     overwrite: true
 
 hooks:
-  BeforeInstall:
+  AfterInstall:
     - location: console/update_repo.sh
       timeout: 300
       runas: root
-  AfterInstall:
-    - location: console/create_message.sh
-      timeout: 300
-      runas: root
+  # AfterInstall:
+  #   - location: console/create_message.sh
+  #     timeout: 300
+  #     runas: root
