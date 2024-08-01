@@ -10,11 +10,12 @@ pipeline {
                 }
             }
         }
-        stage('Update Repo') {
+
+        stage('Run PHP Scripts') {
             steps {
-                dir('/var/www/html/pipeline-jenkins') {
-                    // comentario de prueba
-                    sh 'php /var/www/html/pipeline-jenkins/script/CreateHelloWorldMessage.php'
+                dir('/var/www/html/ec2-jenkins') {
+                    // Ejecutar los scripts PHP
+                    sh 'php script/CreateHelloWorldMessage.php'
                 }
             }
         }
