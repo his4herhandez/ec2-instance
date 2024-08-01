@@ -12,8 +12,10 @@ pipeline {
 
         stage('Run PHP Scripts') {
             steps {
-                // Ejecutar los scripts PHP
-                sh 'php script/CreateHelloWorldMessage.php'
+                    dir('/home/devlink/Workspace/docker-php83/www/PanchosApi') {
+                        // Ejecutar los scripts PHP
+                        sh 'php script/CreateHelloWorldMessage.php'
+                    }
             }
         }
     }
