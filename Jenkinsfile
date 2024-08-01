@@ -9,15 +9,6 @@ pipeline {
                 }
             }
         }
-
-        // stage('Run PHP Scripts') {
-        //     steps {
-        //         dir('/var/www/html/ec2-jenkins') {
-        //             // Ejecutar los scripts PHP
-        //             sh 'php script/CreateHelloWorldMessage.php'
-        //         }
-        //     }
-        // }
     }
 
     post {
