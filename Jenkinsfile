@@ -3,19 +3,22 @@ pipeline {
 
     stages {
 
-        stage('Update repo') {
+        stage('Update Repo') {
             steps {
-                // Instalar las dependencias PHP, si es necesario
-                sh 'git pull origin main' // Asegúrate de que Composer esté instalado
+                // Navegar al directorio del repositorio si es necesario
+                dir('/var/www/html/ec2-jenkins') {
+                    // Actualizar el repositorio
+                    sh 'git pull origin main'
+                }
             }
         }
 
         stage('Run PHP Scripts') {
             steps {
-                    dir('/var/www/html/ec2-jenkins') {
-                        // Ejecutar los scripts PHP
-                        sh 'php script/CreateHelloWorldMessage.php'
-                    }
+                dir('/var/www/html/ec2-jenkins') {
+                    // Ejecutar el script PHP
+                    sh 'php /var/www/html/ec2-jenkins/script/CreateHelloWorldMessage.php'
+                }
             }
         }
     }
