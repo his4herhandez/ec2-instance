@@ -6,7 +6,7 @@ pipeline {
             steps {
                 dir('/var/www/html/pipeline-jenkins') {
                     // comentario de prueba
-                    sh 'git pull origin main'
+                    sh '/var/www/html/pipeline-jenkins/scripts/update_repo.sh'
                 }
             }
         }
@@ -20,22 +20,26 @@ pipeline {
             }
         }
 
-        stage('Run PHP Scripts') {
-            steps {
-                dir('/var/www/html/pipeline-jenkins') {
-                    // Ejecutar los scripts PHP
-                    sh 'php /var/www/html/pipeline-jenkins/script/CreateHelloWorldMessage.php'
-                }
-            }
-        }
+        // stage('Run PHP Scripts') {
+        //     steps {
+        //         dir('/var/www/html/pipeline-jenkins') {
+        //             // Ejecutar los scripts PHP
+        //             sh 'php /var/www/html/pipeline-jenkins/script/CreateHelloWorldMessage.php'
+        //         }
+        //     }
+        // }
     }
 
     post {
         success {
-            echo 'El pipeline se ejecutó correctamente.'
+            echo 'Pipeline executed correctly'
         }
         failure {
-            echo 'El pipeline falló.'
+            echo 'Pipeline failed'
+        }
+        always {
+            // Limpieza o pasos finales, si es necesario
+            echo 'Pipeline finished'
         }
     }
 }

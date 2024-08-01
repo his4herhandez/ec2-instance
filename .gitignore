@@ -1,3 +1,7 @@
 script/hola_mundo.txt
 composer.lock
 /vendor
+/public/images
+/app/models/.db
+/config/eloquent.php
+/.vscode
