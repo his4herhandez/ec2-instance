@@ -5,7 +5,6 @@ pipeline {
         stage('Update Repo') {
             steps {
                 dir('/var/www/html/pipeline-jenkins') {
-                    // Asegúrate de que git esté instalado y configurado
                     sh 'git pull origin main'
                 }
             }
