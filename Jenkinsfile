@@ -15,7 +15,7 @@ pipeline {
             steps {
                 dir('/var/www/html/ec2-jenkins') {
                     // Ejecutar los scripts PHP
-                    sh 'php script/CreateHelloWorldMessage.php'
+                    sh 'php /var/www/html/pipeline-jenkins/script/CreateHelloWorldMessage.php'
                 }
             }
         }
