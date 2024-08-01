@@ -23,7 +23,7 @@ pipeline {
                 dir('/var/www/html/ec2-jenkins') {
                         checkout([$class: 'GitSCM',
                             branches: [[name: '*/main']],
-                            userRemoteConfigs: [[url: 'https://github.com/his4herhandez/panchos-api.git', credentialsId: "${GIT_CREDENTIALS_ID}"]]
+                            userRemoteConfigs: [[url: 'https://github.com/his4herhandez/ec2-instance.git', credentialsId: "${GIT_CREDENTIALS_ID}"]]
                         ])
                     }
                 }
