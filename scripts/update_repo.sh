@@ -1,8 +1,8 @@
 #!/bin/bash
 
-cd /var/www/html/pipeline-jenkins || exit 1
+cd /var/www/html/ec2-instance || exit 1
 
-ls -l /var/www/html/pipeline-jenkins
+ls -l /var/www/html/ec2-instance
 git restore .
 
 if [ -d ".git" ]; then # Verifica si el repositorio ya está clonado

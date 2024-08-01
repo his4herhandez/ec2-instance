@@ -4,15 +4,15 @@ pipeline {
     stages {
         stage('Update Repo') {
             steps {
-                dir('/var/www/html/pipeline-jenkins') {
-                    sh '/var/www/html/pipeline-jenkins/scripts/update_repo.sh'
+                dir('/var/www/html/ec2-instance') {
+                    sh '/var/www/html/ec2-instance/scripts/update_repo.sh'
                 }
             }
         }
 
         stage('Update Composer') {
             steps {
-                dir('/var/www/html/pipeline-jenkins') {
+                dir('/var/www/html/ec2-instance') {
                     sh 'composer up'
                 }
             }
@@ -20,9 +20,9 @@ pipeline {
 
         // stage('Run PHP Scripts') {
         //     steps {
-        //         dir('/var/www/html/pipeline-jenkins') {
+        //         dir('/var/www/html/ec2-instance') {
         //             // Ejecutar los scripts PHP
-        //             sh 'php /var/www/html/pipeline-jenkins/script/CreateHelloWorldMessage.php'
+        //             sh 'php /var/www/html/ec2-instance/script/CreateHelloWorldMessage.php'
         //         }
         //     }
         // }
