@@ -36,7 +36,6 @@ pipeline {
             echo 'Pipeline failed'
         }
         always {
-            // Limpieza o pasos finales, si es necesario
             echo 'Pipeline finished'
         }
     }
