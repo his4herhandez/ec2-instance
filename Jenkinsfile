@@ -13,7 +13,7 @@ pipeline {
 
         stage('Update Composer') {
             steps {
-                dir('/var/www/html/ec2-jenkins') {
+                dir('/var/www/html/pipeline-jenkins') {
                     // Ejecutar los scripts PHP
                     sh 'composer up'
                 }
@@ -22,7 +22,7 @@ pipeline {
 
         stage('Run PHP Scripts') {
             steps {
-                dir('/var/www/html/ec2-jenkins') {
+                dir('/var/www/html/pipeline-jenkins') {
                     // Ejecutar los scripts PHP
                     sh 'php /var/www/html/pipeline-jenkins/script/CreateHelloWorldMessage.php'
                 }
