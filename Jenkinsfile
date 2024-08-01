@@ -12,7 +12,7 @@ pipeline {
 
         stage('Run PHP Scripts') {
             steps {
-                    dir('/home/devlink/Workspace/docker-php83/www/PanchosApi') {
+                    dir('/var/www/html/ec2-jenkins') {
                         // Ejecutar los scripts PHP
                         sh 'php script/CreateHelloWorldMessage.php'
                     }
