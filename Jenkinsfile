@@ -1,17 +1,11 @@
 pipeline {
     agent any
 
-    environment {
-        GIT_CREDENTIALS_ID = 'github-token'
-    }
-
     stages {
-
         stage('Update Repo') {
             steps {
-                // Navegar al directorio del repositorio si es necesario
                 dir('/var/www/html/ec2-jenkins') {
-                    // Actualizar el repositorio
+                    // Asegúrate de que git esté instalado y configurado
                     sh 'git pull origin main'
                 }
             }
@@ -20,8 +14,8 @@ pipeline {
         // stage('Run PHP Scripts') {
         //     steps {
         //         dir('/var/www/html/ec2-jenkins') {
-        //             // Ejecutar el script PHP
-        //             sh 'php /var/www/html/ec2-jenkins/script/CreateHelloWorldMessage.php'
+        //             // Ejecutar los scripts PHP
+        //             sh 'php script/CreateHelloWorldMessage.php'
         //         }
         //     }
         // }
