@@ -5,7 +5,6 @@ pipeline {
         stage('Update Repo') {
             steps {
                 dir('/var/www/html/pipeline-jenkins') {
-                    // comentario de prueba
                     sh '/var/www/html/pipeline-jenkins/scripts/update_repo.sh'
                 }
             }
@@ -14,7 +13,6 @@ pipeline {
         stage('Update Composer') {
             steps {
                 dir('/var/www/html/pipeline-jenkins') {
-                    // Ejecutar los scripts PHP
                     sh 'composer up'
                 }
             }
