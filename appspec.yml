@@ -2,11 +2,14 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /var/www/wordpress/
+    destination: /var/www/ec2-instance
     overwrite: true
-file_exists_behavior: OVERWRITE
 
 hooks:
+  BeforeInstall:
+    - location: console/update_repo.sh
+      timeout: 300
+      runas: root
   AfterInstall:
     - location: console/create_message.sh
       timeout: 300
