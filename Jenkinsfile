@@ -11,6 +11,15 @@ pipeline {
             }
         }
 
+        stage('Update Composer') {
+            steps {
+                dir('/var/www/html/ec2-jenkins') {
+                    // Ejecutar los scripts PHP
+                    sh 'composer up'
+                }
+            }
+        }
+
         stage('Run PHP Scripts') {
             steps {
                 dir('/var/www/html/ec2-jenkins') {
