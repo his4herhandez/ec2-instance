@@ -7,6 +7,12 @@ class ImageController
 
     }
 
+
+    public function index()
+    {
+
+    }
+
     public function uploadImage()
     {
         // Upload image logic here
