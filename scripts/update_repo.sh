@@ -21,8 +21,15 @@ for dir in "${directories[@]}"; do
       continue
     fi
 
-    composer up || { echo "Error al ejecutar composer up en $dir."; }
-    echo "Usuario actual: $(whoami)"
+    composer up || { echo "Error al ejecutar composer up en $dir."; } # actualizamos composer
+
+    # TODO: descomentar siguientes lineas, en tu servidor no tienes eloquent
+    # php "$dir/database/RunMigrations.php" # ejecutamos migraciones
+    # php "$dir/database/RunSeeders.php" # ejecutamos migraciones
+
+    # TODO: eliminar esta linea en ultima version de bash
+    php "$dir/scripts/CreateMessageFile.php" # ejecutamos migraciones
+
     echo "Repositorio en $dir actualizado correctamente."
   else
     echo "El directorio $dir no es un repositorio Git."
