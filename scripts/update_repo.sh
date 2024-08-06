@@ -21,11 +21,11 @@ for dir in "${directories[@]}"; do
       continue
     fi
 
+    composer up || { echo "Error al ejecutar composer up en $dir."; }
     echo "Repositorio en $dir actualizado correctamente."
   else
     echo "El directorio $dir no es un repositorio Git."
   fi
 
 
-  composer up || { echo "Error al ejecutar composer up en $dir."; }
 done
