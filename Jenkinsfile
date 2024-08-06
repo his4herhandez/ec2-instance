@@ -17,19 +17,19 @@ pipeline {
 
                         // Ejecutar comandos en el directorio
                         sh """
-                            cd ${dir} || { echo "No se pudo acceder al directorio ${dir}"; exit 1; }
+                            cd ${dir} || { echo 'No se pudo acceder al directorio ${dir}'; exit 1; }
 
                             if [ -d ".git" ]; then
                                 git pull origin main
 
-                                if [ $? -ne 0 ]; then
-                                    echo "Error al hacer git pull en ${dir}."
+                                if [ \$? -ne 0 ]; then
+                                    echo 'Error al hacer git pull en ${dir}.'
                                     exit 1
                                 fi
 
-                                echo "Repositorio en ${dir} actualizado correctamente."
+                                echo 'Repositorio en ${dir} actualizado correctamente.'
                             else
-                                echo "El directorio ${dir} no es un repositorio Git."
+                                echo 'El directorio ${dir} no es un repositorio Git.'
                             fi
                         """
                     }
@@ -52,9 +52,9 @@ pipeline {
 
                         // Ejecutar comandos en el directorio
                         sh """
-                            cd ${dir} || { echo "No se pudo acceder al directorio ${dir}"; exit 1; }
+                            cd ${dir} || { echo 'No se pudo acceder al directorio ${dir}'; exit 1; }
 
-                            sh 'composer up'
+                            composer up
                         """
                     }
                 }
