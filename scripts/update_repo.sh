@@ -8,13 +8,12 @@ directories=(
   "/var/www/html/jenkins-three"
 )
 
-# Iterar sobre cada directorio en la lista
 for dir in "${directories[@]}"; do
   echo "Actualizando repositorio en $dir..."
 
   cd "$dir" || { echo "No se pudo acceder al directorio $dir"; continue; }
 
-  if [ -d ".git" ]; then # Verifica si el repositorio ya está clonado
+  if [ -d ".git" ]; then
     git pull origin main
 
     if [ $? -ne 0 ]; then
@@ -26,4 +25,7 @@ for dir in "${directories[@]}"; do
   else
     echo "El directorio $dir no es un repositorio Git."
   fi
+
+
+  composer up || { echo "Error al ejecutar composer up en $dir."; }
 done

@@ -16,16 +16,10 @@
                 <input type="file" class="form-control-file" id="image" name="image" required>
             </div>
             <button type="submit" class="btn btn-primary">Cargar Imagen</button>
-
-            <?php
-                $imageController = new ImageController();
-                $imageController->uploadImage();
-            ?>
         </form>
     </div>
 
     <div class="container mt-5">
-
         <?php
             $imageController = new ImageController();
             $imageController->uploadImage();

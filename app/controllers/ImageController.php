@@ -10,7 +10,21 @@ class ImageController
 
     public function index()
     {
+        $uploadDirectory = __DIR__ . '/../../public/images/';
 
+        if (!is_dir($uploadDirectory)) {
+            return;
+        }
+
+        $images = array_diff(scandir($uploadDirectory), array('..', '.'));
+
+        echo '<div class="row">';
+        foreach ($images as $image) {
+            echo '<div class="col-md-3 mb-3">';
+            echo '<img src="public/images/' . htmlspecialchars($image) . '" class="img-fluid" alt="' . htmlspecialchars($image) . '">';
+            echo '</div>';
+        }
+        echo '</div>';
     }
 
     public function uploadImage()
@@ -19,7 +33,7 @@ class ImageController
         $postImage = isset($_FILES['image']);
 
         if (!$postImage) {
-            return false;
+            return $this->index();
         }
 
         $uploadDirectory = __DIR__ . '/../../public/images/';
@@ -36,7 +50,7 @@ class ImageController
         if (in_array($imageFileType, $allowedTypes)) {
 
             if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFilePath)) {
-                echo "La imagen se ha cargado correctamente.";
+                return $this->index();
             } else {
                 echo "Hubo un error al cargar la imagen.";
             }
