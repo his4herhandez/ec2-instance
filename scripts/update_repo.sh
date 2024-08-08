@@ -37,10 +37,12 @@ for dir in "${directories[@]}"; do
 done
 
 # Intentar eliminar el directorio temporal
+echo "Verificando existencia del directorio temporal..."
 if [ -d "/var/www/html/jenkins@tmp" ]; then
+  echo "Directorio temporal encontrado. Intentando eliminar..."
   rm -r /var/www/html/jenkins@tmp
   if [ $? -eq 0 ]; then
-    echo "El directorio /var/www/html/jenkins@tmp ha sido eliminado."
+    echo "El directorio /var/www/html/jenkins@tmp ha sido eliminado correctamente."
   else
     echo "Error: No se pudo eliminar el directorio /var/www/html/jenkins@tmp."
   fi
