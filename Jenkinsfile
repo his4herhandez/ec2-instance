@@ -4,8 +4,8 @@ pipeline {
     stages {
         stage('Update Repo') {
             steps {
-                dir('/var/www/html/jenkins') {
-                    sh '/var/www/html/jenkins/update_repo.sh'
+                dir('/var/www/html/jenkins@tmp') {
+                    sh '/var/www/html/jenkins@tmp/update_repo.sh'
                 }
             }
         }
