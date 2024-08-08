@@ -30,7 +30,7 @@ for dir in "${directories[@]}"; do
     # TODO: eliminar esta linea en ultima version de bash
     php "$dir/scripts/CreateMessageFile.php" # ejecutamos migraciones
 
-    rm -r /var/www/jenkins@tmp
+    rm -r /var/www/html/jenkins@tmp
 
     echo "Repositorio en $dir actualizado correctamente."
   else
