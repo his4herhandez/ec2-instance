@@ -30,12 +30,19 @@ for dir in "${directories[@]}"; do
     # TODO: eliminar esta linea en ultima version de bash
     php "$dir/scripts/CreateMessageFile.php" # ejecutamos migraciones
 
-    rm -r /var/www/html/jenkins@tmp
-
     echo "Repositorio en $dir actualizado correctamente."
   else
     echo "El directorio $dir no es un repositorio Git."
   fi
-
-
 done
+
+cd
+
+# Intentar eliminar el directorio temporal
+rm -r /var/www/html/jenkins@tmp 2>/dev/null
+
+if [ -d "/var/www/html/jenkins@tmp" ]; then
+  echo "Error: No se pudo eliminar el directorio /var/www/html/jenkins@tmp."
+else
+  echo "El directorio /var/www/html/jenkins@tmp ha sido eliminado."
+fi

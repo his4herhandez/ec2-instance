@@ -6,4 +6,4 @@ $handle = fopen($archivo, 'w');
 fwrite($handle, $contenido);
 fclose($handle);
 
-echo 'Archivo creado y contenido escrito con éxito.';
+echo "Archivo creado y contenido escrito con éxito.\n";
