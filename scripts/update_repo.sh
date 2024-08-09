@@ -14,6 +14,11 @@ for dir in "${directories[@]}"; do
   cd "$dir" || { echo "No se pudo acceder al directorio $dir"; continue; }
 
   if [ -d ".git" ]; then
+
+    # Obtener el commit actual antes del pull
+    current_commit=$(git rev-parse HEAD)
+    echo "Current commit $current_commit..."
+
     git pull origin main
 
     if [ $? -ne 0 ]; then
@@ -21,31 +26,11 @@ for dir in "${directories[@]}"; do
       continue
     fi
 
-    composer up || { echo "Error al ejecutar composer up en $dir."; } # actualizamos composer
 
-    # TODO: descomentar siguientes lineas, en tu servidor no tienes eloquent
-    # php "$dir/database/RunMigrations.php" # ejecutamos migraciones
-    # php "$dir/database/RunSeeders.php" # ejecutamos migraciones
+    new_commit=$(git rev-parse HEAD)
+    echo "New commit $new_commit..."
 
-    # TODO: eliminar esta linea en ultima version de bash
-    php "$dir/scripts/CreateMessageFile.php" # ejecutamos migraciones
-
-    echo "Repositorio en $dir actualizado correctamente."
   else
     echo "El directorio $dir no es un repositorio Git."
   fi
 done
-
-# Intentar eliminar el directorio temporal
-echo "Verificando existencia del directorio temporal..."
-if [ -d "/var/www/html/jenkins@tmp" ]; then
-  echo "Directorio temporal encontrado. Intentando eliminar..."
-  rm -r /var/www/html/jenkins@tmp
-  if [ $? -eq 0 ]; then
-    echo "El directorio /var/www/html/jenkins@tmp ha sido eliminado correctamente."
-  else
-    echo "Error: No se pudo eliminar el directorio /var/www/html/jenkins@tmp."
-  fi
-else
-  echo "El directorio /var/www/html/jenkins@tmp no existe."
-fi
