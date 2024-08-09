@@ -15,7 +15,7 @@
                 <label for="image">Selecciona una imagen:</label>
                 <input type="file" class="form-control-file" id="image" name="image" required>
             </div>
-            <button type="submit" class="btn btn-danger">Cargar Imagen</button>
+            <button type="submit" class="btn btn-success">Subir Imagen</button>
         </form>
     </div>
 
