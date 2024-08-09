@@ -3,9 +3,6 @@
 # Lista de servidores
 directories=(
   "/var/www/html/ec2-instance"
-  # "/var/www/html/jenkins-one"
-  # "/var/www/html/jenkins-two"
-  # "/var/www/html/jenkins-three"
 )
 
 for dir in "${directories[@]}"; do
