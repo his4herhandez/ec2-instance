@@ -53,16 +53,47 @@ class MigrationRepository
     }
 
 
-    public function delete()
+    public function delete(int $migrationId)
     {
+        try {
 
+            Migration::where('id', $migrationId)->delete();
+            return (object) [
+                "status" => 1,
+                "data" => []
+            ];
+
+        } catch (\Exception $e) {
+            return (object)[
+                "status" => 0,
+                "msg" => $e->getMessage()
+            ];
+        }
     }
 
 
-    public function getExistsMigrationByName(string $migration)
+    public function getExistsMigrationByName(string $commitId)
     {
         try {
-            $query = Migration::where('migration_name', $migration)->get();
+            $query = Migration::where('migration_name', $commitId)->get();
+
+            return (object)[
+                "status" => 1,
+                "data" => $query
+            ];
+        } catch (\Exception $e) {
+            return (object) [
+                "status" => 0,
+                "msg" => $e->getMessage()
+            ];
+        }
+    }
+
+
+    public function getExistsMigrationByCommitId(string $commitId)
+    {
+        try {
+            $query = Migration::where('commit_id', $commitId)->get();
 
             return (object)[
                 "status" => 1,

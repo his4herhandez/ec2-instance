@@ -24,14 +24,19 @@ class MigrationController
         return $this->migrationService->updateMigration($migrationId, $commitId);
     }
 
-    public function delete(string $commitId)
+    public function delete(int $migrationId)
     {
-        return $this->migrationService->deleteMigration($commitId);
+        return $this->migrationService->deleteMigration($migrationId);
     }
 
     public function getExistsMigrationByName(string $migration)
     {
         return $this->migrationService->getExistsMigrationByName($migration);
+    }
+
+    public function getExistsMigrationByCommitId(string $commitId)
+    {
+        return $this->migrationService->getExistsMigrationByName($commitId);
     }
 
 }

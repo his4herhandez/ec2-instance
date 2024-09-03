@@ -29,10 +29,10 @@ class MigrationService
     }
 
 
-    public function deleteMigration(string $commitId)
+    public function deleteMigration(int $migrationId)
     {
         // obtenemos todas las migrations con ese id
-        $migrations = $this->migrationRepository->getExistsMigrationByName($commitId);
+        $migrations = $this->migrationRepository->delete($migrationId);
 
         if (!$migrations->status){
             return $migrations;
@@ -47,5 +47,11 @@ class MigrationService
     public function getExistsMigrationByName(string $migration)
     {
         return $this->migrationRepository->getExistsMigrationByName($migration);
+    }
+
+
+    public function getExistsMigrationByCommitId(string $commitId)
+    {
+        return $this->migrationRepository->getExistsMigrationByCommitId($commitId);
     }
 }
