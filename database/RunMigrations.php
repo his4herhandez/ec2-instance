@@ -68,7 +68,7 @@ function runUpMigrations($migrationFiles, $commitId)
         $migrationExists = getExistsMigrationByName($file);
 
         if ($migrationExists) {
-            echo "$migrationExists\n";
+            echo "$migrationExists";
             continue;
         }
 

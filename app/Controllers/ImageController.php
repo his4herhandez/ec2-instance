@@ -22,7 +22,7 @@ class ImageController
 
         echo '<div class="row">';
         foreach ($images as $image) {
-            echo '<div class="col-md-6 mb-3">';
+            echo '<div class="col-md-4 mb-3">';
             echo '<img src="public/images/' . htmlspecialchars($image) . '" class="img-fluid" alt="' . htmlspecialchars($image) . '">';
             echo '<button class="btn btn-sm btn-danger mt-3" onclick="deleteImage(\''. $image .'\');">Delete image</button>';
             echo '</div>';

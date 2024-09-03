@@ -75,7 +75,7 @@ class MigrationRepository
     public function getExistsMigrationByName(string $commitId)
     {
         try {
-            $query = Migration::where('migration_name', $commitId)->get();
+            $query = Migration::where('migration_name', $commitId)->first();
 
             return (object)[
                 "status" => 1,
