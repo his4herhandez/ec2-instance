@@ -21,6 +21,7 @@
 
     <div class="container mt-5">
         <?php
+            use App\Controllers\ImageController;
             $imageController = new ImageController();
             $imageController->uploadImage();
         ?>

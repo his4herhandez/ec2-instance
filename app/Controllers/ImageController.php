@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Controllers;
+
 class ImageController
 {
     public function __construct()
@@ -58,6 +60,31 @@ class ImageController
 
         } else {
             echo "Solo se permiten archivos de imagen con los siguientes formatos: JPG, JPEG, PNG, GIF.";
+        }
+    }
+
+    public function deleteImage(string $pathImage)
+    {
+        $dir = __DIR__ . "/../../public/images/$pathImage";
+
+        if (!file_exists($dir)) {
+            return [
+                'execute' => 'error',
+                'message' => 'No existe la imagen'
+            ];
+        }
+
+        // Intentar eliminar el archivo
+        if (unlink($dir)) {
+            return [
+                'execute' => 'success',
+                'message' => 'Imagen eliminada correctamente'
+            ];
+        } else {
+            return [
+                'execute' => 'error',
+                'message' => 'No se pudo eliminar la imagen'
+            ];
         }
     }
 }
