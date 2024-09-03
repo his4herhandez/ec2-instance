@@ -15,9 +15,9 @@ class MigrationService
     }
 
 
-    public function storeMigration(string $migrationName)
+    public function storeMigration(string $migrationName, string $commitId)
     {
-        $migrationDto = MigrationDto::create($migrationName);
+        $migrationDto = MigrationDto::create($migrationName, $commitId);
         $response = $this->migrationRepository->store($migrationDto);
         return $response;
     }
@@ -32,6 +32,11 @@ class MigrationService
     public function deleteMigration(string $commitId)
     {
         // obtenemos todas las migrations con ese id
+        $migrations = $this->migrationRepository->getExistsMigrationByName($commitId);
+
+        if (!$migrations->status){
+            return $migrations;
+        }
 
         // tratamos de eliminar
 

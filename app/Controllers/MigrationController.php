@@ -13,9 +13,9 @@ class MigrationController
         $this->migrationService = new MigrationService();
     }
 
-    public function store(string $migration)
+    public function store(string $migration, string $commitId)
     {
-        return $this->migrationService->storeMigration($migration);
+        return $this->migrationService->storeMigration($migration, $commitId);
     }
 
 

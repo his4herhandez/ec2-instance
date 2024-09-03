@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Migration extends Model
 {
     protected $fillable = [
-        'migration_name'
+        'migration_name',
+        'commit_id'
     ];
 }

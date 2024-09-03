@@ -48,21 +48,19 @@ function runMigrations($migrationsPath, $migrationController, $migrationFiles, $
 
                 $instance = new $class();
 
+                $instance->$migrationMethod();
                 try {
 
                     if ($migrationMethod === 'up') {
 
-                        $instance->up();
-                        $response = $migrationController->store($file); // insertamos
-                        $migrationController->update($response->id, $commitId); // actualizamos
+                        $migrationController->store($file, $commitId); // insertamos
 
                     } else {
 
-                        $instance->down();
-                        $migrationController->delete($file, $commitId);
+                        $migrationController->delete($commitId);
                     }
 
-                    echo "\033[32mMigration $file successfully\033[0m\n";
+                    echo "\033[32mMigration $migrationMethod $file successfully\033[0m\n";
                 } catch (\Exception $e) {
 
                     echo "\033[31mError executing migration $file: " . $e->getMessage() . "\033[0m\n";
@@ -92,7 +90,7 @@ function getExistsMigrationByName($file, $migrationController)
 
     if (!$migrationExists->status) {
         return $migrationExists->msg;
-    } elseif ($migrationExists->data) {
+    } elseif (count($migrationExists->data) > 0) {
         return "\033[31mMigration $file has already been executed\033[0m\n";
     }
 
