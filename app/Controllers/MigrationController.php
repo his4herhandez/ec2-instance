@@ -36,7 +36,7 @@ class MigrationController
 
     public function getExistsMigrationByCommitId(string $commitId)
     {
-        return $this->migrationService->getExistsMigrationByName($commitId);
+        return $this->migrationService->getExistsMigrationByCommitId($commitId);
     }
 
 }
