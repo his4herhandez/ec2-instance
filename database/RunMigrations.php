@@ -59,23 +59,26 @@ function runUpMigrations($migrationFiles, $commitId)
 
     foreach ($migrationFiles as $file) {
 
-        $path = MIGRATIONS_PATH . "/$file";
+        if ($file != "." && $file != "..") {
 
-        if (!is_file($path)) {
-            continue;
-        }
+            $path = MIGRATIONS_PATH . "/$file";
 
-        $migrationExists = getExistsMigrationByName($file);
+            if (!is_file($path)) {
+                continue;
+            }
 
-        if ($migrationExists) {
-            echo "$migrationExists";
-            continue;
-        }
+            $migrationExists = getExistsMigrationByName($file);
 
-        if (executeMigration($path, 'up')) {
-            // Insertamos la migración en el repositorio
-            $migrationController->store($file, $commitId);
-            echo "\033[32mMigration up $file successfully\033[0m\n";
+            if ($migrationExists) {
+                echo "$migrationExists";
+                continue;
+            }
+
+            if (executeMigration($path, 'up')) {
+                // Insertamos la migración en el repositorio
+                $migrationController->store($file, $commitId);
+                echo "\033[32mMigration up $file successfully\033[0m\n";
+            }
         }
     }
 }
