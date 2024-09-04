@@ -22,20 +22,20 @@ runMigrations($migrationFiles, $commitId,$migrationMethod);
 function runMigrations(array $migrationFiles, string $commitId, string $migrationMethod): void
 {
     if ($migrationMethod == "down") {
-        runDownMigrations($migrationFiles, $commitId);
+        runDownMigrations($commitId);
     } else {
         runUpMigrations($migrationFiles, $commitId);
     }
 }
 
-function runDownMigrations(array $migrationFiles, string $commitId)
+function runDownMigrations(string $commitId)
 {
     global $migrationController;
     $migrationExists = getExistsMigrationByCommitId($commitId);
 
     // Verificar si se encontraron migraciones
-    if (!isset($migrationExists->data) || empty($migrationExists->data)) {
-        echo "\033[36mNo migrations found for commit ID $commitId\n \033[0m\n";
+    if (!isset($migrationExists->data) || count($migrationExists->data) === 0) {
+        echo "\033[36mNo migrations found for commit ID $commitId \033[0m\n";
         return;
     }
 
