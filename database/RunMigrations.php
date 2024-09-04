@@ -22,21 +22,21 @@ runMigrations($migrationFiles, $commitId,$migrationMethod);
 function runMigrations(array $migrationFiles, string $commitId, string $migrationMethod): void
 {
     if ($migrationMethod == "down") {
-        runDownMigrations($commitId);
+        runDownMigrations($migrationFiles, $commitId);
     } else {
         runUpMigrations($migrationFiles, $commitId);
     }
 }
 
-function runDownMigrations($commitId)
+function runDownMigrations(array $migrationFiles, string $commitId)
 {
     global $migrationController;
     $migrationExists = getExistsMigrationByCommitId($commitId);
 
     // Verificar si se encontraron migraciones
     if (!isset($migrationExists->data) || empty($migrationExists->data)) {
-        echo "No migrations found for commit ID $commitId.\n";
-        return false;
+        echo "\033[36mNo migrations found for commit ID $commitId\n \033[0m\n";
+        return;
     }
 
     foreach ($migrationExists->data as $migration) {
@@ -48,7 +48,7 @@ function runDownMigrations($commitId)
         if (executeMigration($path, 'down')) {
             // Eliminar la migración del repositorio
             $migrationController->delete($migrationId);
-            echo "\033[32mMigration down for commit ID $commitId completed successfully.\033[0m\n";
+            echo "\033[32mMigration down for commit ID $commitId completed successfully\033[0m\n";
         }
     }
 }
